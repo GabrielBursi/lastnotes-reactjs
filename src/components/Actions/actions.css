@@ -1,0 +1,24 @@
+.cont-btn{
+    display: inline-flex;
+    justify-content: space-evenly;
+    gap: 4px;
+    height: 3rem;
+    width: 12rem;
+}
+button{
+    width: 3rem;
+    font-size: 1.5rem;
+    border: none;
+    border: none;
+    background: none;
+    color: #fff;
+}
+
+.icon{
+    cursor: pointer;
+}
+
+.disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
