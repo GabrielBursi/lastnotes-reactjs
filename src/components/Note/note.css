@@ -1,0 +1,29 @@
+.card-title{
+    color: #3A9BDC;
+    font-weight: 700;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding-bottom: 5px;
+}
+.card-title::-webkit-scrollbar{
+    display: none;
+}
+.card-text{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    max-height: 200px;
+}
+.card-text::-webkit-scrollbar{
+    width: 5px;
+}
+.card-text::-webkit-scrollbar-track {
+    background: transparent;
+}
+.card-text::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+.card-text:hover::-webkit-scrollbar-thumb {
+    background: #888;
+}
