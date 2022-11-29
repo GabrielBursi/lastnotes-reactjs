@@ -1,13 +1,16 @@
 import Header from "./components/Header/Header";
 import NotesArea from "./components/NotesArea/NotesArea";
 import DestaqueProvider from "./context/DestaqueContext";
+import NoteListProvider from "./context/NoteListContext";
 
 function App() {
   return (
     <DestaqueProvider>
-      <Header/>
+      <Header />
       <div className="cont-body">
-        <NotesArea/>
+        <NoteListProvider>
+          <NotesArea />
+        </NoteListProvider>
       </div>
     </DestaqueProvider>
   );

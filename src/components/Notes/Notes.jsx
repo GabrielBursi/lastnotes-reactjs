@@ -9,7 +9,7 @@ import './notes.css'
 function Notes() {
 
     const { destaque, setDestaque } = useContext(DestaqueContext);
-    const { noteList, setNoteList } = useContext(NoteListContext)
+    const { noteList} = useContext(NoteListContext)
 
     return (
       <section>
