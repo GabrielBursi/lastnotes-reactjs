@@ -1,12 +1,15 @@
+import NoteListProvider from '../../context/NoteListContext';
 import NoteForm from '../NoteForm/NoteForm';
 import Notes from '../Notes/Notes'
 import './notesArea.css'
 
 function NotesArea() {
     return (
-        <article>
+        <article className='notes-area'>
+        <NoteListProvider>
             <Notes/>
-            <NoteForm/>
+        </NoteListProvider>
+        <NoteForm/>
         </article>
     );
 }
