@@ -10,10 +10,11 @@ import './noteForm.css'
 function NoteForm() {
 
     const {noteList, setNoteList} = useContext(NoteListContext);
-    const { title, setTitle, desc, setDesc } = useContext(NoteFormContext);
+    const { title, setTitle, desc, setDesc, setVisibleForm } = useContext(NoteFormContext);
 
     function handleSubmit(e){
         e.preventDefault();
+        if(title === '' || desc === '') return
         setNoteList([
             ...noteList,
             {
@@ -22,6 +23,15 @@ function NoteForm() {
                 description: desc
             }
         ])
+        setDesc("");
+        setTitle("");
+    }
+
+    function handleCancel(e){
+        e.preventDefault()
+        setVisibleForm(false)
+        setDesc('')
+        setTitle('')
     }
 
     return (
@@ -49,7 +59,7 @@ function NoteForm() {
             </div>
             <div className="buttons">
                 <button className="cancel">
-                    <FaBan className="icon"/>
+                    <FaBan className="icon" onClick={handleCancel}/>
                 </button>
                 <button type="submit" className="confirm">
                     <FaCheck className="icon"/>

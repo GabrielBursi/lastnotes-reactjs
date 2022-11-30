@@ -6,18 +6,16 @@ import NoteListProvider from "./context/NoteListContext";
 
 function App() {
   return (
-    <>
-    <Header />
-      <div className="cont-body">
-        <NoteListProvider>
-          <NoteFormProvider>
-              <DestaqueProvider>
-                <NotesArea />
-              </DestaqueProvider>
-          </NoteFormProvider>
-        </NoteListProvider>
-      </div>
-    </>
+    <NoteListProvider>
+        <NoteFormProvider>
+          <DestaqueProvider>
+            <Header />
+            <div className="cont-body">
+              <NotesArea />
+            </div>
+          </DestaqueProvider>
+        </NoteFormProvider>
+    </NoteListProvider>
   );
 }
 
