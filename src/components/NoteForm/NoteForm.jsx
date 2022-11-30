@@ -1,4 +1,6 @@
-import React, { useContext } from 'react';
+/* eslint-disable array-callback-return */
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from 'react';
 import { NoteListContext } from '../../context/NoteListContext';
 import { NoteFormContext } from '../../context/NoteFormContext';
 import { DestaqueContext } from '../../context/DestaqueContext';
@@ -10,9 +12,13 @@ import './noteForm.css'
 
 function NoteForm() {
 
-    const {noteList, setNoteList} = useContext(NoteListContext);
+    const { noteList, setNoteList } = useContext(NoteListContext);
     const { title, setTitle, desc, setDesc, setVisibleForm, titleRef } = useContext(NoteFormContext);
-    const { destaque } = useContext(DestaqueContext)
+    const { destaque, setDestaque } = useContext(DestaqueContext)
+
+    useEffect(() => {
+        setLocalNotes()
+    }, [noteList]);
 
     function handleSubmit(e){
         e.preventDefault();
@@ -44,9 +50,14 @@ function NoteForm() {
 
     function handleCancel(e){
         e.preventDefault()
+        setDestaque(false)
         setVisibleForm(false)
         setDesc('')
         setTitle('')
+    }
+
+    function setLocalNotes(){
+        localStorage.setItem('notes', JSON.stringify(noteList))
     }
 
     return (

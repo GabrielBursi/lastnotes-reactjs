@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from "react";
 import { DestaqueContext } from "../../context/DestaqueContext";
 import { NoteFormContext } from "../../context/NoteFormContext";
@@ -10,8 +11,12 @@ import './notes.css'
 function Notes() {
 
   const { destaque, setDestaque } = useContext(DestaqueContext);
-  const { noteList } = useContext(NoteListContext)
+  const { noteList, setNoteList } = useContext(NoteListContext)
   const { setTitle, setDesc } = useContext(NoteFormContext);
+
+  useEffect(() => {
+    getLocalNotes()
+  }, []);
 
   useEffect(() => {
     if(destaque){
@@ -24,6 +29,16 @@ function Notes() {
       setDesc('')
     }
   }, [destaque]);
+
+  function getLocalNotes(){
+    let localNotes = localStorage.getItem('notes')
+    if(localNotes === null){
+      localStorage.setItem('notes',JSON.stringify([]))
+    }else{
+      localNotes = JSON.parse(localNotes)
+      setNoteList(localNotes)
+    }
+  }
 
   return (
     <section>
