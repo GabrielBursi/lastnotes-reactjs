@@ -6,14 +6,15 @@ import { FaPlus, FaPencilAlt, FaTrash } from 'react-icons/fa'
 import './actions.css'
 
 function Actions() {
-    const { visibleForm, setVisibleForm } = useContext(NoteFormContext)
+    const { visibleForm, setVisibleForm, titleRef } = useContext(NoteFormContext)
     
-    function handleForm(){
+    async function handleForm(){
         if(visibleForm){
             setVisibleForm(false)
             return
         }
-        setVisibleForm(true)
+        await setVisibleForm(true)
+        titleRef.current.focus()
     }
 
     return (

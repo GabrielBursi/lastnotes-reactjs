@@ -10,7 +10,7 @@ import './noteForm.css'
 function NoteForm() {
 
     const {noteList, setNoteList} = useContext(NoteListContext);
-    const { title, setTitle, desc, setDesc, setVisibleForm } = useContext(NoteFormContext);
+    const { title, setTitle, desc, setDesc, setVisibleForm, titleRef } = useContext(NoteFormContext);
 
     function handleSubmit(e){
         e.preventDefault();
@@ -44,6 +44,7 @@ function NoteForm() {
                     placeholder="Informe um titulo" 
                     value={title} 
                     onChange={(e)=> setTitle(e.target.value)}
+                    ref={titleRef}
                 />
             </div>
             <div>
