@@ -28,5 +28,5 @@
     background: #888;
 }
 .destaque{
-    background-color: red !important;
+    border: 1px solid black;
 }

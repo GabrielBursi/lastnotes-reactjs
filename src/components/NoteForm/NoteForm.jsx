@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { NoteListContext } from '../../context/NoteListContext';
 import { NoteFormContext } from '../../context/NoteFormContext';
+import { DestaqueContext } from '../../context/DestaqueContext';
 
 import {FaCheck, FaBan} from 'react-icons/fa' ;
 import { v4 as uuidv4 } from "uuid";
@@ -11,10 +12,23 @@ function NoteForm() {
 
     const {noteList, setNoteList} = useContext(NoteListContext);
     const { title, setTitle, desc, setDesc, setVisibleForm, titleRef } = useContext(NoteFormContext);
+    const { destaque } = useContext(DestaqueContext)
 
     function handleSubmit(e){
         e.preventDefault();
         if(title === '' || desc === '') return
+
+        if(destaque){
+            noteList.map(note => {
+                if(note.id === destaque){
+                    note.title = title
+                    note.description = desc
+                }
+            })
+            setNoteList([...noteList])
+            return
+        }
+
         setNoteList([
             ...noteList,
             {
@@ -25,6 +39,7 @@ function NoteForm() {
         ])
         setDesc("");
         setTitle("");
+        titleRef.current.focus()
     }
 
     function handleCancel(e){
