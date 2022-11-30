@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { NoteListContext } from '../../context/NoteListContext';
+import { NoteFormContext } from '../../context/NoteFormContext';
 
 import {FaCheck, FaBan} from 'react-icons/fa' ;
 import { v4 as uuidv4 } from "uuid";
@@ -9,9 +10,7 @@ import './noteForm.css'
 function NoteForm() {
 
     const {noteList, setNoteList} = useContext(NoteListContext);
-
-    const [title, setTitle] = useState();
-    const [desc, setDesc] = useState();
+    const { title, setTitle, desc, setDesc } = useContext(NoteFormContext);
 
     function handleSubmit(e){
         e.preventDefault();
